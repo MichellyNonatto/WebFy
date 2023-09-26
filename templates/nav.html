@@ -1,0 +1,23 @@
+{% load static %}
+
+{% block content %}
+<nav class="sticky top-0 container-fluid flex justify-between items-center bg-neutral-900 z-10">
+    <div class="navbar">
+        <a class="navbar-brand" href="/">
+            <img class="max-h-8" src="{% static 'images/logo_redondo_nome.svg' %}"
+                alt="Circulo vermelho com três riscos curvados no seu centro, ao lado dessa logo está escrito Webfy.">
+        </a>
+    </div>
+    <ion-searchbar size="small" show-clear-button="always" placeholder="Pesquisar"
+        class="w-80 rounded-lg"></ion-searchbar>
+    <div class="flex gap-4">
+        <a href="/artistas"><button type="button"
+            class="bg-white text-black px-2.5 py-2.5 rounded-full hover:opacity-80 ease-in-out duration-500">Explorar</button></a>
+        <button type="button"
+            class="font-semibold px-2.5 py-2.5 hover:underline ease-in-out duration-500 flex justify-center gap-4 content-stretch">
+            Sair
+            <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
+        </button>
+    </div>
+</nav>
+{% endblock %}

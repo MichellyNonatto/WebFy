@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {% block title %}{% endblock %} | Webfy
+    </title>
+
+    <link rel="shortcut icon" href="../static/images/logo_redondo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+
+    <style>
+        html {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .fonte {
+            color: #D00000;
+        }
+    </style>
+
+</head>
+
+<body class="bg-neutral-900 text-white mx-8">
+    {% include 'nav.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+
+    <footer class="my-8 fonte text-center font-semibold container-fluid">
+        <a href="#"><img class="w-20 mx-auto" src="{% static 'images/logo_quadrado_nome.svg' %}"></a>
+        <p>&copy; Feito por Michelly Nonato</p>
+        <a href="https://bra.ifsp.edu.br" target="_blanck" class="dark:text-slate-500">IFSP Campus Bragança 2023</a>
+    </footer>
+</body>
+
+</html>
