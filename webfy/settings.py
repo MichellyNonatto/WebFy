@@ -28,8 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
 
-WSGI_APPLICATION = 'webflix.wsgi.application'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -73,7 +71,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'webfy.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
