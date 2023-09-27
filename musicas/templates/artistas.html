@@ -8,7 +8,13 @@ Artistas
 {% block content %}
 <main class="my-12">
     <h2 class="font-bold mb-2 text-4xl">Qual artista você quer ouvir hoje?</h2>
-     <h3 class="font-bold my-8 text-2xl uppercase ">Novas tendências</h3>
+    <div class="flex justify-center gap-8 my-8">
+        <button class="btn btn-danger" data-filter>Adicionados recentementes</button>
+        <button class="btn btn-danger" data-filter>Mais ouvidos</button>
+        <button class="btn btn-danger active" data-filter>Todos</button>
+    </div>
+    <div data-container class="hidden">
+     <h3 class="font-bold my-8 text-2xl uppercase">Novas tendências</h3>
      <section class="flex flex-wrap gap-8">
         {% for musica in recentes %}
         <div class="text-center">
@@ -22,7 +28,8 @@ Artistas
         </div>
         {% endfor %}
     </section>
-    <hr class="my-2">
+    </div>
+    <div data-container class="hidden">
      <h3 class="font-bold my-8 text-2xl uppercase ">Mais ouvidos</h3>
      <section class="flex flex-wrap gap-8">
         {% for musica in visualizados %}
@@ -37,7 +44,8 @@ Artistas
         </div>
         {% endfor %}
     </section>
-    <hr class="my-2">
+    </div>
+    <div data-container class="inline-block">
     <h3 class="font-bold my-8 text-2xl uppercase ">Todos de A-Z</h3>
     <section class="flex flex-wrap gap-8">
         {% for musica in object_list %}
@@ -52,5 +60,8 @@ Artistas
         </div>
         {% endfor %}
     </section>
+    </div>
 </main>
+
+    <script src="{% static "js/script.js" %}"></script>
 {% endblock %}
