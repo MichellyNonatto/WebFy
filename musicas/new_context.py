@@ -5,5 +5,5 @@ def recentes(request):
     return {'recentes': lista_artistas}
 
 def visualizados(request):
-    lista_artistas = Musica.objects.all().order_by('visualizacoes')[0:10]
+    lista_artistas = Musica.objects.all().order_by('-visualizacoes')[0:10]
     return {'visualizados': lista_artistas}

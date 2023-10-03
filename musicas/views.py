@@ -21,6 +21,12 @@ class DetalheArtista(DetailView):
     template_name = "detalheartista.html"
     model = Musica
 
+    def get(self, request, *args, **kwargs):
+        musica = self.get_object()
+        musica.visualizacoes += 1
+        musica.save()
+        return super().get(self, request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         import random
         context = super(DetalheArtista, self).get_context_data(**kwargs)
