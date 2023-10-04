@@ -31,12 +31,15 @@ Pesquisa
 
     <main data-main class='bg-primary_black min-h-screen w-full'>
         <section class='bg-primary_black  min-h-screen flex justify-center py-10'>
-            <div class="container-fluid" >
-                <h2 class="text-gray-200 text-2xl font-medium">
+            <div class="container-fluid">
+                <h2 class="text-gray-200 text-3xl font-medium">
                     Resultados da Busca
                 </h2>
-                <div class="flex flex-wrap items-center min-w-full movie_lis" id="pesquisa">
+            <div data-contain class="my-8">
+                <h3 class="text-gray-200 text-2xl font-medium">Artistas</h3>
+                <div data-return class="flex flex-wrap items-center min-w-full movie_lis">
                     {% for musica in object_list %}
+                        {% if musica.dataCriacao  %}
                         <div class="mr-4 my-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer">
                             <a class="transition ease-in-out delay-150 link" href="{% url 'musica:detalheartista' musica.pk %}" style="text-decoration: none;">
                                 <div class="rounded-full  w-60 h-60 bg-cover bg-center border-2 border-slate-800 link__container" style="background-image: url('{{ musica.thumb.url }}');">
@@ -44,7 +47,25 @@ Pesquisa
                                 </div>
                             </a>
                         </div>
+                        {% endif %}
                     {% endfor %}
+                </div>
+            </div>
+
+            <div data-contain class="my-8">
+                <h3 class="text-gray-200 text-2xl font-medium">Músicas</h3>
+                <div data-return class="flex flex-wrap items-center min-w-full">
+                        {% for musica in object_list %}
+                            {% if musica.link %}
+                                <a href="{{ musica.link }}" class="text-white">
+                                    <div class="mr-4 my-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer">
+                                        <p class="text-center font-semibold" >{{ musica.titulo }}</p>
+                                        <iframe src="{{ musica.link }}" title="YouTube video player" frameborder="0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowfullscreen></iframe>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </section>
@@ -56,14 +77,38 @@ Pesquisa
      </section>
 
     <script>
-        const pesquisa = document.getElementById("pesquisa");
-    
-        if (pesquisa.childElementCount == 0) {
-            const none = document.querySelector("[data-main]");
-            const block = document.querySelector("[data-section]");
+        const pesquisa = document.querySelectorAll("[data-return]");
+        const pesquisaArray = Array.from(pesquisa);
+        const pesquisaContain = document.querySelectorAll("[data-contain]");
+        const pesquisaContainArray = Array.from(pesquisaContain);
+        let account = 0;
 
-            none.style.display = "none";
-            block.style.display = "block";
+        pesquisaArray.forEach((container, index) => {
+            switch (index) {
+                case 0:
+                    if (container.childElementCount === 0) {
+                        pesquisaContainArray[0].style.display = "none";
+                        account ++;
+                    }
+                    break;
+                case 1:
+                    if (container.childElementCount === 0) {
+                        pesquisaContainArray[1].style.display = "none";
+                        account ++;
+                    }
+                    break;
+            }
+        });
+
+        if(account === 2){
+            const main = document.querySelector("[data-main]");
+            const section = document.querySelector("[data-section]");
+
+            main.style.display = "none";
+            section.style.display = "block";
+
+            account = 0;
         }
+
     </script>
 {% endblock %}

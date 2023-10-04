@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
-from .models import Musica
+from .models import Musica, MusicaArtista
 
 # Create your views here.
 
@@ -42,10 +42,18 @@ class DetalheArtista(DetailView):
 class PesquisaMusica(ListView):
     template_name = "pesquisa.html"
     model = Musica
+
     def get_queryset(self):
         termo_pesquisa = self.request.GET.get("query")
-        if termo_pesquisa:
-            object_list = Musica.objects.filter(titulo__icontains=termo_pesquisa)
-            return object_list
-        else:
+        if termo_pesquisa == "" or termo_pesquisa.isspace():
             return None
+
+        resultados_musicas = Musica.objects.filter(titulo__icontains=termo_pesquisa)
+        resultados_artistas = MusicaArtista.objects.filter(titulo__icontains=termo_pesquisa)
+        resultados = list(resultados_musicas) + list(resultados_artistas)
+        return resultados
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['termo_pesquisa'] = self.request.GET.get("query")
+        return context
