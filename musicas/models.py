@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import AbstractUser, Group, Permission
 
 # Create your models here.
 LISTA_CATEGORIAS = {
@@ -17,7 +18,7 @@ class Musica(models.Model):
     descricao = models.TextField(max_length=1000)
     categoria = models.CharField(max_length=10, choices=LISTA_CATEGORIAS)
     visualizacoes = models.IntegerField(default=0)
-    dataCriacao = models.DateTimeField(default=timezone.now())
+    dataCriacao = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.titulo

@@ -23,15 +23,19 @@ Pesquisa
              font-size: 2rem;
              color: transparent;
          }
+
+         .pesquisa {
+             display: none;
+         }
      </style>
 
-    <main class='bg-primary_black min-h-screen w-full'>
+    <main data-main class='bg-primary_black min-h-screen w-full'>
         <section class='bg-primary_black  min-h-screen flex justify-center py-10'>
             <div class="container-fluid" >
                 <h2 class="text-gray-200 text-2xl font-medium">
                     Resultados da Busca
                 </h2>
-                <div class="flex flex-wrap items-center min-w-full movie_lis">
+                <div class="flex flex-wrap items-center min-w-full movie_lis" id="pesquisa">
                     {% for musica in object_list %}
                         <div class="mr-4 my-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer">
                             <a class="transition ease-in-out delay-150 link" href="{% url 'musica:detalheartista' musica.pk %}" style="text-decoration: none;">
@@ -42,9 +46,24 @@ Pesquisa
                         </div>
                     {% endfor %}
                 </div>
-
-
             </div>
         </section>
     </main>
+
+     <section data-section class="container pesquisa">
+            <p class="font-medium text-3xl text-center">Título não encontrado!!</p>
+            <div class="w-full my-8 h-96 bg-center bg-contain bg-no-repeat" style="background-image: url('{% static 'images/pesquisa.svg'%}');"></div>
+     </section>
+
+    <script>
+        const pesquisa = document.getElementById("pesquisa");
+    
+        if (pesquisa.childElementCount == 0) {
+            const none = document.querySelector("[data-main]");
+            const block = document.querySelector("[data-section]");
+
+            none.style.display = "none";
+            block.style.display = "block";
+        }
+    </script>
 {% endblock %}
