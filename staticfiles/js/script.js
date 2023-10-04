@@ -9,7 +9,6 @@ const Filtrate = (evento) => {
     evento.preventDefault();
 
     const btn_click = evento.target;
-    console.log(btn_click)
     const indexDoBotaoClicado = btnArray.indexOf(btn_click);
 
     btnArray.forEach((btn) => {

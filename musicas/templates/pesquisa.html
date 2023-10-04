@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+Pesquisa
+{% endblock %}
+
+{% block content %}
+     <style>
+         .link:hover *{
+             color: white;
+             opacity: .7;
+             transition: 1s all;
+         }
+
+         .link__container {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+
+         .link__container-texto{
+             font-size: 2rem;
+             color: transparent;
+         }
+     </style>
+
+    <main class='bg-primary_black min-h-screen w-full'>
+        <section class='bg-primary_black  min-h-screen flex justify-center py-10'>
+            <div class="container-fluid" >
+                <h2 class="text-gray-200 text-2xl font-medium">
+                    Resultados da Busca
+                </h2>
+                <div class="flex flex-wrap items-center min-w-full movie_lis">
+                    {% for musica in object_list %}
+                        <div class="mr-4 my-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer">
+                            <a class="transition ease-in-out delay-150 link" href="{% url 'musica:detalheartista' musica.pk %}" style="text-decoration: none;">
+                                <div class="rounded-full  w-60 h-60 bg-cover bg-center border-2 border-slate-800 link__container" style="background-image: url('{{ musica.thumb.url }}');">
+                                    <p class="text-center font-semibold link__container-texto" >{{ musica.titulo }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </section>
+    </main>
+{% endblock %}

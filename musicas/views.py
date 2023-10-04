@@ -38,3 +38,14 @@ class DetalheArtista(DetailView):
                 return context
             else:
                 continue
+
+class PesquisaMusica(ListView):
+    template_name = "pesquisa.html"
+    model = Musica
+    def get_queryset(self):
+        termo_pesquisa = self.request.GET.get("query")
+        if termo_pesquisa:
+            object_list = Musica.objects.filter(titulo__icontains=termo_pesquisa)
+            return object_list
+        else:
+            return None

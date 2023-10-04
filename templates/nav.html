@@ -8,8 +8,12 @@
                 alt="Circulo vermelho com três riscos curvados no seu centro, ao lado dessa logo está escrito Webfy.">
         </a>
     </div>
-    <ion-searchbar size="small" show-clear-button="always" placeholder="Pesquisar"
-        class="w-80 rounded-lg"></ion-searchbar>
+    <form method="get" action="{% url 'musica:pesquisamusica' %}" class="w-80 rounded-lg" >
+       <ion-searchbar name="query" placeholder="Pesquisar" type="text" value="{{ request.GET.query }}"></ion-searchbar>
+         <!--<input type="text" class="py-1 px-2 rounded-md text-black" name="query" placeholder="Pesquisar">-->
+        <input type="submit" value="">
+    </form>
+
     <div class="flex gap-4">
         <a href="/artistas"><button type="button"
             class="bg-white text-black px-2.5 py-2.5 rounded-full hover:opacity-80 ease-in-out duration-500">Explorar</button></a>
