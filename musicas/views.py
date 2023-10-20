@@ -1,15 +1,16 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
 from .models import Musica, MusicaArtista
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
 
-class Home(TemplateView):
+class Home(LoginRequiredMixin, TemplateView):
     template_name = "home.html"
 
 
-class Artistas(ListView):
+class Artistas(LoginRequiredMixin, ListView):
     template_name = "artistas.html"
     model = Musica
 
@@ -17,7 +18,7 @@ class Artistas(ListView):
         return Musica.objects.all().order_by('titulo')
 
 
-class DetalheArtista(DetailView):
+class DetalheArtista(LoginRequiredMixin, DetailView):
     template_name = "detalheartista.html"
     model = Musica
 
@@ -25,6 +26,8 @@ class DetalheArtista(DetailView):
         musica = self.get_object()
         musica.visualizacoes += 1
         musica.save()
+        usuario = request.user
+        usuario.musica_visto.add(musica)
         return super().get(self, request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -39,7 +42,7 @@ class DetalheArtista(DetailView):
             else:
                 continue
 
-class PesquisaMusica(ListView):
+class PesquisaMusica(LoginRequiredMixin, ListView):
     template_name = "pesquisa.html"
     model = Musica
 
