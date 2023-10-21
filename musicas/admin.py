@@ -5,7 +5,7 @@ from django.contrib.auth.admin import UserAdmin
 # Register your models here.
 campo = list(UserAdmin.fieldsets)
 campo.append(
-    ("Histórico", {'fields':('musica_visto',)})
+    ("Histórico", {'fields':('musica_visto', 'foto_perfil')})
 )
 
 UserAdmin.fieldsets = tuple(campo)

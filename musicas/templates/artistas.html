@@ -7,8 +7,15 @@ Artistas
 
 {% block content %}
 <main class="my-12">
-    <h1>Olá {{ user.username }}!</h1>
-    <h2 class="font-bold mb-2 text-4xl">Qual artista você quer ouvir hoje?</h2>
+    <div class="flex gap-4 items-center mb-12">
+        <img class="w-20 h-20 rounded-full" src="{{ request.user.foto_perfil.url }}">
+        <div>
+            <h1 class="text-4xl font-bold">Olá <span class="text-red-600">{{ user.username }}</span>!</h1>
+            <h4 id="mensagem">Bom dia</h4>
+        </div>
+    </div>
+    <hr>
+    <h2 class="font-bold mb-2 text-4xl text-center">Qual artista você quer ouvir hoje?</h2>
     <div class="flex justify-center gap-8 my-8">
         <button class="btn btn-danger" data-filter>Novos</button>
         <button class="btn btn-danger" data-filter>Favoritos</button>
@@ -80,4 +87,26 @@ Artistas
 </main>
 
     <script src="{% static "js/script.js" %}"></script>
+
+    <script>
+    var date = new Date();
+    var hora = date.getHours();
+    var mensagem = document.getElementById('mensagem');
+
+    function mensagemHora(elemento) {
+        if ((hora > 11) && (hora < 19)) {
+            elemento.innerHTML = "Boa Tarde";
+
+        } else if ((hora > 18) && (hora < 24)) {
+            elemento.innerHTML = "Boa Noite";
+
+        } else if ((hora > 4) && (hora < 12)) {
+            elemento.innerHTML = "Bom Dia";
+        } else {
+            elemento.innerHTML = "Boa Madrugada";
+        }
+    }
+
+    mensagemHora(mensagem);
+    </script>
 {% endblock %}

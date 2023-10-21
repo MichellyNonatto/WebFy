@@ -12,6 +12,19 @@ LISTA_CATEGORIAS = {
     ("OUTROS", "Outros"),
 }
 
+LISTA_AVATAR = {
+    ("avatares/avatar(11).jpg", "Imagem 11"),
+    ("avatares/avatar(10).jpg", "Imagem 10"),
+    ("avatares/avatar(9).jpg", "Imagem 9"),
+    ("avatares/avatar(8).jpg", "Imagem 8"),
+    ("avatares/avatar(7).jpg", "Imagem 7"),
+    ("avatares/avatar(6).jpg", "Imagem 6"),
+    ("avatares/avatar(5).jpg", "Imagem 5"),
+    ("avatares/avatar(4).jpg", "Imagem 4"),
+    ("avatares/avatar(1).jpg", "Imagem 1"),
+
+}
+
 
 class Musica(models.Model):
     titulo = models.CharField(max_length=100)
@@ -37,3 +50,4 @@ class MusicaArtista(models.Model):
 
 class Usuario(AbstractUser):
     musica_visto = models.ManyToManyField("Musica", related_name="usuario")
+    foto_perfil = models.ImageField(choices=LISTA_AVATAR,  default='avatares/avatar(1).jpg')

@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from .models import Usuario
+from django.forms.widgets import ClearableFileInput
 from django import forms
 
 
