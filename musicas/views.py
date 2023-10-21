@@ -1,13 +1,30 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView, ListView, DetailView
-from .models import Musica, MusicaArtista
+from django.shortcuts import render, redirect, reverse
+from .models import Musica, MusicaArtista, Usuario
+from .forms import CriarContaForm, FormHome
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 
 
-class Home(LoginRequiredMixin, TemplateView):
+class Home(FormView):
     template_name = "home.html"
+    form_class = FormHome
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('musicas:artistas')
+        else:
+            return super().get(self, request, *args, **kwargs)
+
+    def get_success_url(self):
+        email = self.request.POST.get("email")
+        usuarios = Usuario.objects.filter(email=email)
+        if usuarios:
+            return reverse('musicas:login')
+        else:
+            return reverse('musicas:criarconta')
 
 
 class Artistas(LoginRequiredMixin, ListView):
@@ -60,3 +77,18 @@ class PesquisaMusica(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['termo_pesquisa'] = self.request.GET.get("query")
         return context
+
+
+class PaginaPerfil(LoginRequiredMixin, TemplateView):
+    template_name = "editarperfil.html"
+
+class CriarConta(FormView):
+    template_name = "criarconta.html"
+    form_class = CriarContaForm
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('musicas:login')

@@ -69,7 +69,7 @@
                 <div class="text-center">
                     <h2 class="my-2 font-bold text-lg">{{ artista.titulo }}</h2>
                     <a class="transition ease-in-out delay-150 hover:opacity-75"
-                        href="{% url 'musica:detalheartista' artista.pk %}">
+                        href="{% url 'musicas:detalheartista' artista.pk %}">
                         <div class="rounded-full w-36 h-36 bg-cover bg-center border-2 border-slate-800"
                             style="background-image: url('{{ artista.thumb.url }}');">
                         </div>

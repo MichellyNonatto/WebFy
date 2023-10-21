@@ -1,26 +1,39 @@
 {% load static %}
 
 {% block content %}
-<nav class="sticky top-0 container-fluid flex justify-between items-center bg-neutral-900 z-10">
+<nav class="sticky top-0 container-fluid flex justify-between items-center bg-neutral-900 z-50">
     <div class="navbar">
         <a class="navbar-brand" href="/">
             <img class="max-h-8" src="{% static 'images/logo_redondo_nome.svg' %}"
                 alt="Circulo vermelho com três riscos curvados no seu centro, ao lado dessa logo está escrito Webfy.">
         </a>
     </div>
-    <form method="get" action="{% url 'musica:pesquisamusica' %}" class="w-80 rounded-lg" >
-       <ion-searchbar name="query" placeholder="Pesquisar" type="text" value="{{ request.GET.query }}"></ion-searchbar>
-         <!--<input type="text" class="py-1 px-2 rounded-md text-black" name="query" placeholder="Pesquisar">-->
-        <input type="submit" value="">
-    </form>
 
-    <div class="flex gap-4">
-        <button type="button" class="bg-white text-black px-2.5 py-2.5 rounded-full hover:opacity-80 ease-in-out duration-500">Editar</button>
-        <button type="button"
-            class="font-semibold px-2.5 py-2.5 hover:underline ease-in-out duration-500 flex justify-center gap-4 content-stretch">
-            Sair
-            <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
-        </button>
-    </div>
+    {% if user.is_authenticated %}
+        <form method="get" action="{% url 'musicas:pesquisamusica' %}" class="w-80 rounded-lg" >
+           <ion-searchbar name="query" placeholder="Pesquisar" type="text" value="{{ request.GET.query }}"></ion-searchbar>
+             <!--<input type="text" class="py-1 px-2 rounded-md text-black" name="query" placeholder="Pesquisar">-->
+            <input type="submit" value="">
+        </form>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <div class="flex gap-4">
+           <a href="{% url 'musicas:editarperfil' %}"><button type="button" class="bg-white text-black px-4 py-2.5 rounded-full hover:opacity-80 ease-in-out duration-500">Editar</button></a>
+            <a href="{% url 'musicas:logout' %}"><button type="button" class="font-semibold px-2.5 py-2.5 hover:underline ease-in-out duration-500 flex justify-center gap-4 content-stretch">
+                Sair
+                <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
+            </button></a>
+        </div>
+        {% else %}
+          <div class="flex gap-4">
+                <a href="{% url 'musicas:login' %}" class="text-white"><button type="button" class="bg-white text-black px-4 py-2.5 rounded-full hover:opacity-80 ease-in-out duration-500">
+                    Login
+                </button></a>
+                <a href="{% url 'musicas:criarconta' %}" class="text-white"><button href="#" type="button" class="font-semibold px-2.5 py-2.5 hover:underline ease-in-out duration-500 flex justify-center gap-4 content-stretch">
+                    Criar Conta
+                </button></a>
+            </div>
+    {% endif %}
 </nav>
 {% endblock %}
