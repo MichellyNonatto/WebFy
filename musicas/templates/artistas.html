@@ -10,7 +10,15 @@ Artistas
     <div class="flex gap-4 items-center mb-12">
         <img class="w-20 h-20 rounded-full" src="{{ request.user.foto_perfil.url }}">
         <div>
-            <h1 class="text-4xl font-bold">Olá <span class="text-red-600">{{ user.username }}</span>!</h1>
+            <h1 class="text-4xl font-bold">Olá <span class="text-red-600">
+                {% if user.first_name %}
+                    {{ user.first_name }}
+                    {{ user.last_name }}
+                {% else %}
+                    {{ user.username }}
+                {% endif %}
+            </span>
+            </h1>
             <h4 id="mensagem">Bom dia</h4>
         </div>
     </div>
@@ -20,7 +28,7 @@ Artistas
         <button class="btn btn-danger" data-filter>Novos</button>
         <button class="btn btn-danger" data-filter>Favoritos</button>
         <button class="btn btn-danger active" data-filter>Todos</button>
-        <button class="btn btn-danger active" data-filter>Assistidos</button>
+        <button class="btn btn-danger" data-filter>Assistidos</button>
     </div>
     <div data-container class="hidden">
         <h3 class="font-bold my-8 text-2xl uppercase">Novas tendências</h3>

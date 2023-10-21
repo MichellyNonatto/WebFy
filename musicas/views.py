@@ -1,8 +1,10 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
 from .models import Musica, MusicaArtista, Usuario
 from .forms import CriarContaForm, FormHome
-from django.views.generic import TemplateView, ListView, DetailView, FormView
+from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django import forms
 
 
 # Create your views here.
@@ -79,8 +81,16 @@ class PesquisaMusica(LoginRequiredMixin, ListView):
         return context
 
 
-class PaginaPerfil(LoginRequiredMixin, TemplateView):
+class PaginaPerfil(LoginRequiredMixin, UpdateView):
     template_name = "editarperfil.html"
+    model = Usuario
+    fields = ['first_name', 'last_name', 'email', 'foto_perfil']
+
+    def form_valid(self, form):
+        self.object = form.save()
+        return super().form_valid(form)
+    def get_success_url(self):
+        return reverse('musicas:artistas')
 
 class CriarConta(FormView):
     template_name = "criarconta.html"

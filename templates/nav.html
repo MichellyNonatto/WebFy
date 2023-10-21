@@ -19,7 +19,7 @@
 
     {% if user.is_authenticated %}
         <div class="flex gap-4">
-           <a href="{% url 'musicas:editarperfil' %}"><button type="button" class="bg-white text-black px-4 py-2.5 rounded-full hover:opacity-80 ease-in-out duration-500">Editar</button></a>
+           <a href="{% url 'musicas:editarperfil' request.user.pk %}"><button type="button" class="bg-white text-black px-4 py-2.5 rounded-full hover:opacity-80 ease-in-out duration-500">Editar</button></a>
             <a href="{% url 'musicas:logout' %}"><button type="button" class="font-semibold px-2.5 py-2.5 hover:underline ease-in-out duration-500 flex justify-center gap-4 content-stretch">
                 Sair
                 <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
