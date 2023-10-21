@@ -34,7 +34,8 @@ Home
             <br>
             Quer começar? Coloque seu e-mail abaixo para acessar.
         </p>
-        <form class="my-4">
+        <form class="my-4" method="post">
+             {% csrf_token %}
             {{ form|crispy }}
             <button
                 class="container-fluid rounded-lg bg-red-600 font-medium py-2 px-3 hover:bg-red-700 ease-in-out"

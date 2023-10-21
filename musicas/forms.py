@@ -5,7 +5,8 @@ from django import forms
 
 
 class FormHome(forms.Form):
-    email = forms.EmailField()
+    email = forms.EmailField(label=False)
+
 
 class CriarContaForm(UserCreationForm):
     email = forms.EmailField()
