@@ -4,7 +4,7 @@ const btnArray = Array.from(btn);
 const container = document.querySelectorAll('[data-container]');
 const containerArray = Array.from(container)
 
-console.log(btn)
+
 const Filtrate = (evento) => {
     evento.preventDefault();
 
