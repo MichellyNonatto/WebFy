@@ -2,15 +2,16 @@
 {% load static %}
 
 {% block title %}
-Artistas
+    Artistas
 {% endblock %}
 
 {% block content %}
-<main class="my-12">
-    <div class="flex gap-4 items-center mb-12">
-        <div class="w-20 h-20 rounded-full bg-norepeat bg-cover" style="background-image: url('{{ request.user.foto_perfil.url }}')"></div>
-        <div>
-            <h1 class="text-4xl font-bold">Olá <span class="text-red-600">
+    <main class="my-12">
+        <div class="flex gap-4 items-center mb-12">
+            <div class="w-20 h-20 rounded-full bg-norepeat bg-cover"
+                 style="background-image: url('{{ request.user.foto_perfil.url }}')"></div>
+            <div>
+                <h1 class="text-4xl font-bold">Olá <span class="text-red-600">
                 {% if user.first_name %}
                     {{ user.first_name }}
                     {{ user.last_name }}
@@ -18,103 +19,141 @@ Artistas
                     {{ user.username }}
                 {% endif %}
             </span>
-            </h1>
-            <h4 id="mensagem">Bom dia</h4>
+                </h1>
+                <h4 id="mensagem">Bom dia</h4>
+            </div>
         </div>
-    </div>
-    <hr>
-    <h2 class="font-bold mb-2 text-4xl text-center">Qual artista você quer ouvir hoje?</h2>
-    <div class="flex justify-center gap-8 my-8">
-        <button class="btn btn-danger" data-filter>Novos</button>
-        <button class="btn btn-danger" data-filter>Favoritos</button>
-        <button class="btn btn-danger active" data-filter>Todos</button>
-        <button class="btn btn-danger" data-filter>Assistidos</button>
-    </div>
-    <div data-container class="hidden">
-        <h3 class="font-bold my-8 text-2xl uppercase">Novas tendências</h3>
-        <section class="flex flex-wrap gap-8">
-            {% for musica in recentes %}
-                <div class="text-center">
-                    <h2 class="my-2 font-bold text-lg">{{ musica.titulo }}</h2>
-                    <a class="transition ease-in-out delay-150 hover:opacity-75" href="{% url 'musicas:detalheartista' musica.pk %}">
-                        <div class="rounded-full w-60 h-60 bg-cover bg-center border-2 border-slate-800" style="background-image: url('{{ musica.thumb.url }}');">
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </section>
-    </div>
-    <div data-container class="hidden">
-     <h3 class="font-bold my-8 text-2xl uppercase ">Mais ouvidos</h3>
-     <section class="flex flex-wrap gap-8">
-        {% for musica in visualizados %}
-        <div class="text-center">
-            <h2 class="my-2 font-bold text-lg">{{ musica.titulo }}</h2>
-            <a class="transition ease-in-out delay-150 hover:opacity-75"
-                href="{% url 'musicas:detalheartista' musica.pk %}">
-                <div class="rounded-full w-60 h-60 bg-cover bg-center border-2 border-slate-800"
-                    style="background-image: url('{{ musica.thumb.url }}');">
-                </div>
-            </a>
+        <hr>
+        <h2 class="font-bold mb-2 text-4xl text-center">Qual artista você quer ouvir hoje?</h2>
+        <div class="flex justify-center gap-8 my-8">
+            <button class="btn btn-danger" data-filter>Novos</button>
+            <button class="btn btn-danger" data-filter>Favoritos</button>
+            <button class="btn btn-danger active" data-filter>Todos</button>
+            <button class="btn btn-danger" data-filter>Assistidos</button>
         </div>
-        {% endfor %}
-    </section>
-    </div>
-    <div data-container class="inline-block">
-    <h3 class="font-bold my-8 text-2xl uppercase ">Todos de A-Z</h3>
-    <section class="flex flex-wrap gap-8">
-        {% for musica in object_list %}
-        <div class="text-center">
-            <h2 class="my-2 font-bold text-lg">{{ musica.titulo }}</h2>
-            <a class="transition ease-in-out delay-150 hover:opacity-75"
-                href="{% url 'musicas:detalheartista' musica.pk %}">
-                <div class="rounded-full w-60 h-60 bg-cover bg-center border-2 border-slate-800"
-                    style="background-image: url('{{ musica.thumb.url }}');">
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-    </section>
-    </div>
-     <div data-container class="hidden">
-        <h3 class="font-bold my-8 text-2xl uppercase">Assistidos</h3>
-        <section class="flex flex-wrap gap-8">
-            {% for musica in request.user.musica_visto.all %}
-                {% if forloop.counter < 5 %}
+        <div data-container class="hidden">
+            <h3 class="font-bold my-8 text-2xl uppercase">Novas tendências</h3>
+            <section class="flex flex-wrap gap-8">
+                {% for musica in recentes %}
                     <div class="text-center">
                         <h2 class="my-2 font-bold text-lg">{{ musica.titulo }}</h2>
-                        <a class="transition ease-in-out delay-150 hover:opacity-75" href="{% url 'musicas:detalheartista' musica.pk %}">
-                            <div class="rounded-full w-60 h-60 bg-cover bg-center border-2 border-slate-800" style="background-image: url('{{ musica.thumb.url }}');">
+                        <a class="transition ease-in-out delay-150 hover:opacity-75"
+                           href="{% url 'musicas:detalheartista' musica.pk %}">
+                            <div class="rounded-full w-60 h-60 bg-cover bg-center border-2 border-slate-800"
+                                 style="background-image: url('{{ musica.thumb.url }}');">
                             </div>
                         </a>
                     </div>
-                {% endif %}
-            {% endfor %}
-        </section>
-    </div>
-</main>
+                {% endfor %}
+            </section>
+        </div>
+        <div data-container class="hidden">
+            <h3 class="font-bold my-8 text-2xl uppercase ">Mais ouvidos</h3>
+            <section class="flex flex-wrap gap-8">
+                {% for musica in visualizados %}
+                    <div class="text-center">
+                        <h2 class="my-2 font-bold text-lg">{{ musica.titulo }}</h2>
+                        <a class="transition ease-in-out delay-150 hover:opacity-75"
+                           href="{% url 'musicas:detalheartista' musica.pk %}">
+                            <div class="rounded-full w-60 h-60 bg-cover bg-center border-2 border-slate-800"
+                                 style="background-image: url('{{ musica.thumb.url }}');">
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </section>
+        </div>
+        <div data-container class="inline-block">
+            <h3 class="font-bold my-8 text-2xl uppercase ">Todos de A-Z</h3>
+            <section class="flex flex-wrap gap-8">
+                {% for musica in object_list %}
+                    <div class="text-center">
+                        <h2 class="my-2 font-bold text-lg">{{ musica.titulo }}</h2>
+                        <a class="transition ease-in-out delay-150 hover:opacity-75"
+                           href="{% url 'musicas:detalheartista' musica.pk %}">
+                            <div class="rounded-full w-60 h-60 bg-cover bg-center border-2 border-slate-800"
+                                 style="background-image: url('{{ musica.thumb.url }}');">
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </section>
+        </div>
+        <div data-container class="hidden">
+            <h3 class="font-bold my-8 text-2xl uppercase">Assistidos</h3>
+            <section class="flex flex-wrap gap-8">
+                {% for musica in request.user.musica_visto.all %}
+                    {% if forloop.counter < 5 %}
+                        <div class="text-center">
+                            <h2 class="my-2 font-bold text-lg">{{ musica.titulo }}</h2>
+                            <a class="transition ease-in-out delay-150 hover:opacity-75"
+                               href="{% url 'musicas:detalheartista' musica.pk %}">
+                                <div class="rounded-full w-60 h-60 bg-cover bg-center border-2 border-slate-800"
+                                     style="background-image: url('{{ musica.thumb.url }}');">
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </section>
+        </div>
+    </main>
 
     <script src="{% static "js/script.js" %}"></script>
 
     <script>
-    var date = new Date();
-    var hora = date.getHours();
-    var mensagem = document.getElementById('mensagem');
+        var date = new Date();
+        var hora = date.getHours();
+        var mensagem = document.getElementById('mensagem');
 
-    function mensagemHora(elemento) {
-        if ((hora > 11) && (hora < 19)) {
-            elemento.innerHTML = "Boa Tarde";
+        function mensagemHora(elemento) {
+            if ((hora > 11) && (hora < 19)) {
+                elemento.innerHTML = "Boa Tarde";
 
-        } else if ((hora > 18) && (hora < 24)) {
-            elemento.innerHTML = "Boa Noite";
+            } else if ((hora > 18) && (hora < 24)) {
+                elemento.innerHTML = "Boa Noite";
 
-        } else if ((hora > 4) && (hora < 12)) {
-            elemento.innerHTML = "Bom Dia";
-        } else {
-            elemento.innerHTML = "Boa Madrugada";
+            } else if ((hora > 4) && (hora < 12)) {
+                elemento.innerHTML = "Bom Dia";
+            } else {
+                elemento.innerHTML = "Boa Madrugada";
+            }
         }
-    }
 
-    mensagemHora(mensagem);
-    </script>
+        mensagemHora(mensagem);
+
+        const btn = document.querySelectorAll('[data-filter]');
+        const btnArray = Array.from(btn);
+
+        const container = document.querySelectorAll('[data-container]');
+        const containerArray = Array.from(container)
+
+
+        const Filtrate = (evento) => {
+            evento.preventDefault();
+
+            const btn_click = evento.target;
+            console.log(btn_click)
+            const indexDoBotaoClicado = btnArray.indexOf(btn_click);
+
+            btnArray.forEach((btn) => {
+                btn.classList.remove("active");
+            });
+
+            btn_click.classList.add("active");
+
+            containerArray.forEach((container, index) => {
+                if (index === indexDoBotaoClicado) {
+                    container.classList.add("inline-block");
+                    container.classList.remove("hidden");
+                } else {
+                    container.classList.remove("inline-block");
+                    container.classList.add("hidden");
+                }
+            });
+        }
+
+        btnArray.forEach((btn) => {
+            btn.addEventListener('click', Filtrate);
+        });    </script>
 {% endblock %}

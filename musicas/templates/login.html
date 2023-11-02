@@ -3,26 +3,30 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Login
+    Login
 {% endblock %}
 
 {% block content %}
-        <header class="w-full h-screen flex justify-center items-center bg-no-repeat bg-cover p-12"  style="background-image: url('{% static 'images/login.jpg' %}');">
-            <div class="h-full container-fluid">
-                <form method="post" class="text-center max-w-lg mx-auto my-auto bg-neutral-900 rounded-lg p-8">
-                    <div class="text-xl mb-4">
-                        <img class="w-12 mx-auto mb-2"  src="{% static 'images/logo_quadrado.svg' %}">
-                        <h3 class="text-2xl font-semibold">Seja bem-vindo!</h3>
-                        <p class="text-sm">Faça Login com sua conta <b>WebFy</b></p>
-                    </div>
-                    {% csrf_token %}
-                    {{ form|crispy}}
-                    <button class="bg-red-600 py-1 my-2 px-3 w-full text-white md:text-lg rounded-md" type="submit">Fazer Login</button>
-                    <small>
-                    Não tem uma conta ainda? <p><a href={% url 'musicas:criarconta' %}#">Clique aqui para criar uma conta</a></p>
-                    </small>
-                </form>
+    <header class="w-full h-screen flex justify-center items-center bg-no-repeat bg-cover p-12"
+            style="background-image: url('{% static 'images/login.jpg' %}');">
+        <div class="h-full container-fluid">
+            <form method="post" class="text-center max-w-lg mx-auto my-auto bg-neutral-900 rounded-lg p-8">
+                <div class="text-xl mb-4">
+                    <img class="w-12 mx-auto mb-2" src="{% static 'images/logo_quadrado.svg' %}">
+                    <h3 class="text-2xl font-semibold">Seja bem-vindo!</h3>
+                    <p class="text-sm">Faça Login com sua conta <b>WebFy</b></p>
+                </div>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="bg-red-600 py-1 my-2 px-3 w-full text-white md:text-lg rounded-md" type="submit">Fazer
+                    Login
+                </button>
+                <small>
+                    Não tem uma conta ainda? <p><a href={% url 'musicas:criarconta' %}#">Clique aqui para criar uma
+                    conta</a></p>
+                </small>
+            </form>
 
-            </div>
-        </header>
+        </div>
+    </header>
 {% endblock %}

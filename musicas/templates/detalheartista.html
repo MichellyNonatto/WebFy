@@ -2,98 +2,98 @@
 {% load static %}
 
 {% block title %}
-{{ object.titulo }}
+    {{ object.titulo }}
 {% endblock %}
 
 {% block content %}
-<main>
-    <section class="h-screen relative bg-no-repeat flex  items-end bg-cover container-fluid"
-        style="background-image: url('{{ object.thumb.url }}'); padding: 0px;">
-        <div class="pb-2 pl-6 bg-neutral-900/70 w-full font-bold">
-            <h2 class="mb-2 text-5xl my-4">
-                {{ object.titulo }}
-            </h2>
-             <div class="flex gap-8 text-center my-4 font-medium text-white">
-                 <p>{{ object.categoria }}</p>
-                <p class="mx-4">|</p>
-                 <p>Visualizações: {{ object.visualizacoes }}</p>
-            </div>
-            <div class="flex my-4">
-                <a href="{{ object.musicas.first.link }}">
-                    <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
-                        <ion-icon name="play" class="text-2xl"></ion-icon>
-                        <span class="ml-3 font-medium">
+    <main>
+        <section class="h-screen relative bg-no-repeat flex  items-end bg-cover container-fluid"
+                 style="background-image: url('{{ object.thumb.url }}'); padding: 0px;">
+            <div class="pb-2 pl-6 bg-neutral-900/70 w-full font-bold">
+                <h2 class="mb-2 text-5xl my-4">
+                    {{ object.titulo }}
+                </h2>
+                <div class="flex gap-8 text-center my-4 font-medium text-white">
+                    <p>{{ object.categoria }}</p>
+                    <p class="mx-4">|</p>
+                    <p>Visualizações: {{ object.visualizacoes }}</p>
+                </div>
+                <div class="flex my-4">
+                    <a href="{{ object.musicas.first.link }}">
+                        <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
+                            <ion-icon name="play" class="text-2xl"></ion-icon>
+                            <span class="ml-3 font-medium">
                             Play
                         </span>
-                    </button>
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class='bg-primary_black flex justify-center py-2'>
-        <div class="p-8 w-10/12 relative">
-            <h2 class="text-gray-200 text-3xl font-bold">
-                Descrição
-            </h2>
-            <div class="flex justify-left  items-center min-w-full  movie_lis">
-                <p class="text-gray-100 text-lg">
-                    {{ object.descricao }}
-                </p>
-            </div>
-
-            <div style='margin-top:2rem; margin-bottom:2rem;'>
-                <h2 class="text-gray-200 text-3xl font-bold">Músicas</h2>
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        {% for musica in object.musicas.all %}
-                        <div class="swiper-slide">
-                            <h2 class="text-gray-200 font-bold my-2">{{ musica.titulo }}</h2>
-                            <iframe src="{{ musica.link }}" title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class='bg-primary_black flex justify-center py-2'>
-        <div class="p-8 w-10/12 relative">
-            <h2 class="text-gray-200 text-3xl font-bold">Relacionados</h2>
-            <div class="flex flex-wrap gap-20 justify-center">
-                {% for artista in artistas_relacionados %}
-                <div class="text-center">
-                    <h2 class="my-2 font-bold text-lg">{{ artista.titulo }}</h2>
-                    <a class="transition ease-in-out delay-150 hover:opacity-75"
-                        href="{% url 'musicas:detalheartista' artista.pk %}">
-                        <div class="rounded-full w-36 h-36 bg-cover bg-center border-2 border-slate-800"
-                            style="background-image: url('{{ artista.thumb.url }}');">
-                        </div>
+                        </button>
                     </a>
                 </div>
-                {% endfor %}
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+        <section class='bg-primary_black flex justify-center py-2'>
+            <div class="p-8 w-10/12 relative">
+                <h2 class="text-gray-200 text-3xl font-bold">
+                    Descrição
+                </h2>
+                <div class="flex justify-left  items-center min-w-full  movie_lis">
+                    <p class="text-gray-100 text-lg">
+                        {{ object.descricao }}
+                    </p>
+                </div>
 
-<script>
-    const swiper = new Swiper('.swiper', {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'fraction',
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+                <div style='margin-top:2rem; margin-bottom:2rem;'>
+                    <h2 class="text-gray-200 text-3xl font-bold">Músicas</h2>
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            {% for musica in object.musicas.all %}
+                                <div class="swiper-slide">
+                                    <h2 class="text-gray-200 font-bold my-2">{{ musica.titulo }}</h2>
+                                    <iframe src="{{ musica.link }}" title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    });
-</script>
+        <section class='bg-primary_black flex justify-center py-2'>
+            <div class="p-8 w-10/12 relative">
+                <h2 class="text-gray-200 text-3xl font-bold">Relacionados</h2>
+                <div class="flex flex-wrap gap-20 justify-center">
+                    {% for artista in artistas_relacionados %}
+                        <div class="text-center">
+                            <h2 class="my-2 font-bold text-lg">{{ artista.titulo }}</h2>
+                            <a class="transition ease-in-out delay-150 hover:opacity-75"
+                               href="{% url 'musicas:detalheartista' artista.pk %}">
+                                <div class="rounded-full w-36 h-36 bg-cover bg-center border-2 border-slate-800"
+                                     style="background-image: url('{{ artista.thumb.url }}');">
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'fraction',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+        });
+    </script>
 {% endblock %}

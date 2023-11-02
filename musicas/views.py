@@ -54,12 +54,13 @@ class DetalheArtista(LoginRequiredMixin, DetailView):
         context = super(DetalheArtista, self).get_context_data(**kwargs)
         while True:
             artistas_relacionados = Musica.objects.filter(categoria=self.get_object().categoria)[
-                random.randint(0, 5):random.randint(6, 11)]
+                                    random.randint(0, 5):random.randint(6, 11)]
             if len(artistas_relacionados) < 5 and len(artistas_relacionados) > 0:
                 context["artistas_relacionados"] = artistas_relacionados
                 return context
             else:
                 continue
+
 
 class PesquisaMusica(LoginRequiredMixin, ListView):
     template_name = "pesquisa.html"
@@ -89,8 +90,10 @@ class PaginaPerfil(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         self.object = form.save()
         return super().form_valid(form)
+
     def get_success_url(self):
         return reverse('musicas:artistas')
+
 
 class CriarConta(FormView):
     template_name = "criarconta.html"

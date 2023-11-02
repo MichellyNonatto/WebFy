@@ -3,28 +3,36 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Editar Perfil
+    Editar Perfil
 {% endblock %}
 
 {% block content %}
-        <header class="w-full flex justify-center items-center bg-no-repeat bg-cover p-12"  style="background-image: url('{% static 'images/login.jpg' %}');">
-            <div class="h-full container-fluid">
-                <form method="post" enctype="multipart/form-data" class="text-center max-w-lg mx-auto my-auto bg-neutral-900 rounded-lg p-8">
-                    <div class="flex flex-col gap-4 items-center justify-center">
-                        <img class="w-20 h-20 rounded-full" src="{{ request.user.foto_perfil.url }}">
-                        <h1 class="text-2xl font-bold">Usuário: <span class="text-red-600">{{ user.username }}</span></h1>
+    <header class="w-full flex justify-center items-center bg-no-repeat bg-cover p-12"
+            style="background-image: url('{% static 'images/login.jpg' %}');">
+        <div class="h-full container-fluid">
+            <form method="post" enctype="multipart/form-data"
+                  class="text-center max-w-lg mx-auto my-auto bg-neutral-900 rounded-lg p-8">
+                <div class="flex flex-col gap-4 items-center justify-center">
+                    <div class="w-20 h-20 rounded-full bg-norepeat bg-cover"
+                         style="background-image: url('{{ request.user.foto_perfil.url }}')"></div>
+                    <div>
+                        <h1 class="text-2xl font-bold">Usuário: <span class="text-red-600">{{ user.username }}</span>
+                        </h1>
                     </div>
                     <hr>
                     <h3 class="text-xl font-semibold my-8">Edite os campos abaixo para atualizar o seu perfil</h3>
                     {% csrf_token %}
                     {{ form|crispy }}
                     <div class="flex gap-2 justify-center my-8">
-                        <button type="submit" class="bg-red-600 py-1 px-3 text-white md:text-lg rounded-md">Salvar alterações</button>
-                        <a href="{% url 'musicas:artistas' %}" class="py-1 px-3 text-white md:text-lg rounded-md">Cancelar</a>
+                        <button type="submit" class="bg-red-600 py-1 px-3 text-white md:text-lg rounded-md">Salvar
+                            alterações
+                        </button>
+                        <a href="{% url 'musicas:artistas' %}"
+                           class="py-1 px-3 text-white md:text-lg rounded-md">Cancelar</a>
                     </div>
                     <a href="{% url 'musicas:mudarsenha' %}" class="text-white">Alterar senha</a>
-                </form>
+            </form>
 
-            </div>
-        </header>
+        </div>
+    </header>
 {% endblock %}

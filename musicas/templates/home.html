@@ -3,160 +3,160 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Home
+    Home
 {% endblock %}
 
 {% block content %}
-<header class="w-full font-bold text-xl my-5 flex justify-between container-fluid ">
-    <div class="w-2/4">
-        <h2 class="mb-2 text-4xl m-full">Seja bem-vindo ao Webfy <span class="text-xs align-top">&copy;</span></h2>
-        <h4 id="mensagem">Bom dia</h4>
-        <div class="swiper-container overflow-hidden">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-1.svg'%}" alt="Imagem 1">
-                </div>
-                <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-2.svg'%}" alt="Imagem 2">
-                </div>
-                <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-3.svg'%}" alt="Imagem 3">
-                </div>
-                <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-4.svg'%}" alt="Imagem 4">
-                </div>
-                <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-5.svg'%}" alt="Imagem 4">
-                </div>
-            </div>
-        </div>
-    </div>
-    <section class="my-auto">
-        <p class="text-center font-medium mb-4 leading-10">
-            <span class="uppercase font-bold">Clipes e músicas da internet em um só lugar!</span>
-            <br>
-            <span class="text-red-600">Assista onde quiser. Cancele quando quiser.</span>
-            <br>
-            Quer começar? Coloque seu e-mail abaixo para acessar.
-        </p>
-        <form class="my-4" method="post">
-             {% csrf_token %}
-            {{ form|crispy }}
-            <button
-                class="container-fluid rounded-lg bg-red-600 font-medium py-2 px-3 hover:bg-red-700 ease-in-out"
-                type="submit">
-                Acessar
-            </button>
-        </form>
-    </section>
-</header>
-
-<main>
-    <section class="flex gap-4 justify-between container-fluid  text-center">
-        <div class="col flex flex-col justify-center items-center leading-8">
-            <img class="w-32 my-4" src="{% static 'images/youtube.png' %}">
-            <h3 class="font-semibold text-lg">Assista aos melhores clipes do YouTube!</h3>
-            <p>Listamos seus artistas favoritos para você aproveitar ao máximo.</p>
-        </div>
-        <div class="col flex flex-col justify-center items-center leading-8">
-            <img class="w-32 my-4" src="{% static 'images/seguranca.png' %}">
-            <h3 class="font-semibold text-lg">Privacidade e Segurança</h3>
-            <p>Suas informações estão criptografadas.</p>
-        </div>
-        <div class="col flex flex-col justify-center items-center leading-8">
-            <img class="w-32 my-4" src="{% static 'images/fone-de-ouvido.png' %}">
-            <h3 class="font-semibold text-lg">Soute seu lado artista</h3>
-            <p>Ouça quando e onde quiser!</p>
-        </div>
-    </section>
-    <hr class="m-8">
-    <section class="container-fluid ">
-        <h3 class="mb-4 text-4xl font-bold">Estilo é o que não falta por aqui</h3>
-        <div id="swiper" class="swiper-container overflow-hidden min-w-full">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide flex gap-4 justify-between">
-                    <img src="{% static 'images/pop.svg' %}">
-                    <img src="{% static 'images/rock2.svg' %}">
-                    <img src="{% static 'images/mpb.svg' %}">
-                    <img src="{% static 'images/pagode.svg' %}">
-                </div>
-                <div class="swiper-slide flex justify-around">
-                    <img src="{% static 'images/funk.svg' %}">
-                    <img src="{% static 'images/rap.svg' %}">
-                    <img src="{% static 'images/sertanejo.svg' %}">
-                    <img src="{% static 'images/gospel.svg' %}">
-                </div>
-                <div class="swiper-slide flex justify-around">
-                    <img src="{% static 'images/heavy_metal.svg' %}">
-                    <img src="{% static 'images/forro.svg' %}">
-                    <img src="{% static 'images/k-pop.svg' %}">
-                    <img src="{% static 'images/eletronica.svg' %}">
+    <header class="w-full font-bold text-xl my-5 flex justify-between container-fluid ">
+        <div class="w-2/4">
+            <h2 class="mb-2 text-4xl m-full">Seja bem-vindo ao Webfy <span class="text-xs align-top">&copy;</span></h2>
+            <h4 id="mensagem">Bom dia</h4>
+            <div class="swiper-container overflow-hidden">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-1.svg' %}" alt="Imagem 1">
+                    </div>
+                    <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-2.svg' %}" alt="Imagem 2">
+                    </div>
+                    <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-3.svg' %}" alt="Imagem 3">
+                    </div>
+                    <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-4.svg' %}" alt="Imagem 4">
+                    </div>
+                    <div class="swiper-slide"><img src="{% static 'images/ouvindo_musica_capa-5.svg' %}" alt="Imagem 4">
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <hr class="m-8">
-    <section class="container-fluid ">
-        <h3 class="mb-4 text-4xl font-bold">Gosto, cada um tem o seu</h3>
-        <div id="swiper" class="swiper-container overflow-hidden min-w-full">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide flex gap-4 justify-between">
-                    <img src="{% static 'images/gloria_groove.svg' %}">
-                    <img src="{% static 'images/racionais.svg' %}">
-                    <img src="{% static 'images/justin_bieber.svg' %}">
-                    <img src="{% static 'images/lady_gaga.svg' %}">
-                </div>
-                <div class="swiper-slide flex gap-4 justify-between">
-                    <img src="{% static 'images/billie_eilish.svg' %}">
-                    <img src="{% static 'images/maroon_5.svg' %}">
-                    <img src="{% static 'images/shaw_mendes.svg' %}">
-                    <img src="{% static 'images/marina_sena.svg' %}">
-                </div>
-                <div class="swiper-slide flex gap-4 justify-between">
-                    <img src="{% static 'images/britney_spears.svg' %}">
-                    <img src="{% static 'images/gunsn_roses.svg' %}">
-                    <img src="{% static 'images/katy_perry.svg' %}">
-                    <img src="{% static 'images/jao.svg' %}">
+        <section class="my-auto">
+            <p class="text-center font-medium mb-4 leading-10">
+                <span class="uppercase font-bold">Clipes e músicas da internet em um só lugar!</span>
+                <br>
+                <span class="text-red-600">Assista onde quiser. Cancele quando quiser.</span>
+                <br>
+                Quer começar? Coloque seu e-mail abaixo para acessar.
+            </p>
+            <form class="my-4" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button
+                        class="container-fluid rounded-lg bg-red-600 font-medium py-2 px-3 hover:bg-red-700 ease-in-out"
+                        type="submit">
+                    Acessar
+                </button>
+            </form>
+        </section>
+    </header>
+
+    <main>
+        <section class="flex gap-4 justify-between container-fluid  text-center">
+            <div class="col flex flex-col justify-center items-center leading-8">
+                <img class="w-32 my-4" src="{% static 'images/youtube.png' %}">
+                <h3 class="font-semibold text-lg">Assista aos melhores clipes do YouTube!</h3>
+                <p>Listamos seus artistas favoritos para você aproveitar ao máximo.</p>
+            </div>
+            <div class="col flex flex-col justify-center items-center leading-8">
+                <img class="w-32 my-4" src="{% static 'images/seguranca.png' %}">
+                <h3 class="font-semibold text-lg">Privacidade e Segurança</h3>
+                <p>Suas informações estão criptografadas.</p>
+            </div>
+            <div class="col flex flex-col justify-center items-center leading-8">
+                <img class="w-32 my-4" src="{% static 'images/fone-de-ouvido.png' %}">
+                <h3 class="font-semibold text-lg">Soute seu lado artista</h3>
+                <p>Ouça quando e onde quiser!</p>
+            </div>
+        </section>
+        <hr class="m-8">
+        <section class="container-fluid ">
+            <h3 class="mb-4 text-4xl font-bold">Estilo é o que não falta por aqui</h3>
+            <div id="swiper" class="swiper-container overflow-hidden min-w-full">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide flex gap-4 justify-between">
+                        <img src="{% static 'images/pop.svg' %}">
+                        <img src="{% static 'images/rock2.svg' %}">
+                        <img src="{% static 'images/mpb.svg' %}">
+                        <img src="{% static 'images/pagode.svg' %}">
+                    </div>
+                    <div class="swiper-slide flex justify-around">
+                        <img src="{% static 'images/funk.svg' %}">
+                        <img src="{% static 'images/rap.svg' %}">
+                        <img src="{% static 'images/sertanejo.svg' %}">
+                        <img src="{% static 'images/gospel.svg' %}">
+                    </div>
+                    <div class="swiper-slide flex justify-around">
+                        <img src="{% static 'images/heavy_metal.svg' %}">
+                        <img src="{% static 'images/forro.svg' %}">
+                        <img src="{% static 'images/k-pop.svg' %}">
+                        <img src="{% static 'images/eletronica.svg' %}">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <hr class="m-8">
-    <section class="flex flex-col container-fluid ">
-        <h3 class="mb-4 text-4xl font-bold">Toda hora é hora de curtir um bom som!</h3>
-        <iframe class="w-2/3 h-96 mx-auto"
-            src="https://www.youtube.com/embed/a9_Q6F5W7k4?si=pgQQ6ZwWscwcPPWk?autoplay=1"
-            title="YouTube video player"></iframe>
-    </section>
-</main>
+        </section>
+        <hr class="m-8">
+        <section class="container-fluid ">
+            <h3 class="mb-4 text-4xl font-bold">Gosto, cada um tem o seu</h3>
+            <div id="swiper" class="swiper-container overflow-hidden min-w-full">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide flex gap-4 justify-between">
+                        <img src="{% static 'images/gloria_groove.svg' %}">
+                        <img src="{% static 'images/racionais.svg' %}">
+                        <img src="{% static 'images/justin_bieber.svg' %}">
+                        <img src="{% static 'images/lady_gaga.svg' %}">
+                    </div>
+                    <div class="swiper-slide flex gap-4 justify-between">
+                        <img src="{% static 'images/billie_eilish.svg' %}">
+                        <img src="{% static 'images/maroon_5.svg' %}">
+                        <img src="{% static 'images/shaw_mendes.svg' %}">
+                        <img src="{% static 'images/marina_sena.svg' %}">
+                    </div>
+                    <div class="swiper-slide flex gap-4 justify-between">
+                        <img src="{% static 'images/britney_spears.svg' %}">
+                        <img src="{% static 'images/gunsn_roses.svg' %}">
+                        <img src="{% static 'images/katy_perry.svg' %}">
+                        <img src="{% static 'images/jao.svg' %}">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-8">
+        <section class="flex flex-col container-fluid ">
+            <h3 class="mb-4 text-4xl font-bold">Toda hora é hora de curtir um bom som!</h3>
+            <iframe class="w-2/3 h-96 mx-auto"
+                    src="https://www.youtube.com/embed/a9_Q6F5W7k4?si=pgQQ6ZwWscwcPPWk?autoplay=1"
+                    title="YouTube video player"></iframe>
+        </section>
+    </main>
 
-<script>
-    var date = new Date();
-    var hora = date.getHours();
-    var mensagem = document.getElementById('mensagem');
+    <script>
+        var date = new Date();
+        var hora = date.getHours();
+        var mensagem = document.getElementById('mensagem');
 
-    function mensagemHora(elemento) {
-        if ((hora > 11) && (hora < 19)) {
-            elemento.innerHTML = "Boa Tarde";
+        function mensagemHora(elemento) {
+            if ((hora > 11) && (hora < 19)) {
+                elemento.innerHTML = "Boa Tarde";
 
-        } else if ((hora > 18) && (hora < 24)) {
-            elemento.innerHTML = "Boa Noite";
+            } else if ((hora > 18) && (hora < 24)) {
+                elemento.innerHTML = "Boa Noite";
 
-        } else if ((hora > 4) && (hora < 12)) {
-            elemento.innerHTML = "Bom Dia";
-        } else {
-            elemento.innerHTML = "Boa Madrugada";
+            } else if ((hora > 4) && (hora < 12)) {
+                elemento.innerHTML = "Bom Dia";
+            } else {
+                elemento.innerHTML = "Boa Madrugada";
+            }
         }
-    }
 
-    mensagemHora(mensagem);
+        mensagemHora(mensagem);
 
-    var swiper = new Swiper('.swiper-container', {
-        loop: true,
-        speed: 1500,
-        autoplay: {
-            delay: 10000,
-            disableOnInteraction: false,
-        },
-    });
-    var myswiper = new Swiper("#swiper", {
-        slidesPerView: 1,
-        spaceBetween: 30,
-    });
-</script>
+        var swiper = new Swiper('.swiper-container', {
+            loop: true,
+            speed: 1500,
+            autoplay: {
+                delay: 10000,
+                disableOnInteraction: false,
+            },
+        });
+        var myswiper = new Swiper("#swiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+        });
+    </script>
 {% endblock %}

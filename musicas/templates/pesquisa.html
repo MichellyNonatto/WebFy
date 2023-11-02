@@ -2,32 +2,32 @@
 {% load static %}
 
 {% block title %}
-Pesquisa
+    Pesquisa
 {% endblock %}
 
 {% block content %}
-     <style>
-         .link:hover *{
-             color: white;
-             opacity: .7;
-             transition: 1s all;
-         }
+    <style>
+        .link:hover * {
+            color: white;
+            opacity: .7;
+            transition: 1s all;
+        }
 
-         .link__container {
-             display: flex;
-             align-items: center;
-             justify-content: center;
-         }
+        .link__container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-         .link__container-texto{
-             font-size: 2rem;
-             color: transparent;
-         }
+        .link__container-texto {
+            font-size: 2rem;
+            color: transparent;
+        }
 
-         .pesquisa {
-             display: none;
-         }
-     </style>
+        .pesquisa {
+            display: none;
+        }
+    </style>
 
     <main data-main class='bg-primary_black min-h-screen w-full'>
         <section class='bg-primary_black  min-h-screen flex justify-center py-10'>
@@ -35,32 +35,37 @@ Pesquisa
                 <h2 class="text-gray-200 text-3xl font-medium">
                     Resultados da Busca
                 </h2>
-            <div data-contain class="my-8">
-                <h3 class="text-gray-200 text-2xl font-medium">Artistas</h3>
-                <div data-return class="flex flex-wrap items-center min-w-full movie_lis">
-                    {% for musica in object_list %}
-                        {% if musica.dataCriacao  %}
-                        <div class="mr-4 my-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer">
-                            <a class="transition ease-in-out delay-150 link" href="{% url 'musicas:detalheartista' musica.pk %}" style="text-decoration: none;">
-                                <div class="rounded-full  w-60 h-60 bg-cover bg-center border-2 border-slate-800 link__container" style="background-image: url('{{ musica.thumb.url }}');">
-                                    <p class="text-center font-semibold link__container-texto" >{{ musica.titulo }}</p>
+                <div data-contain class="my-8">
+                    <h3 class="text-gray-200 text-2xl font-medium">Artistas</h3>
+                    <div data-return class="flex flex-wrap items-center min-w-full movie_lis">
+                        {% for musica in object_list %}
+                            {% if musica.dataCriacao %}
+                                <div class="mr-4 my-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer">
+                                    <a class="transition ease-in-out delay-150 link"
+                                       href="{% url 'musicas:detalheartista' musica.pk %}"
+                                       style="text-decoration: none;">
+                                        <div class="rounded-full  w-60 h-60 bg-cover bg-center border-2 border-slate-800 link__container"
+                                             style="background-image: url('{{ musica.thumb.url }}');">
+                                            <p class="text-center font-semibold link__container-texto">{{ musica.titulo }}</p>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
 
-            <div data-contain class="my-8">
-                <h3 class="text-gray-200 text-2xl font-medium">Músicas</h3>
-                <div data-return class="flex flex-wrap items-center min-w-full">
+                <div data-contain class="my-8">
+                    <h3 class="text-gray-200 text-2xl font-medium">Músicas</h3>
+                    <div data-return class="flex flex-wrap items-center min-w-full">
                         {% for musica in object_list %}
                             {% if musica.link %}
                                 <a href="{{ musica.link }}" class="text-white">
                                     <div class="mr-4 my-4 overflow-hidden flex-shrink-0 rounded-md cursor-pointer">
-                                        <p class="text-center font-semibold" >{{ musica.titulo }}</p>
-                                        <iframe src="{{ musica.link }}" title="YouTube video player" frameborder="0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowfullscreen></iframe>
+                                        <p class="text-center font-semibold">{{ musica.titulo }}</p>
+                                        <iframe src="{{ musica.link }}" title="YouTube video player" frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen></iframe>
                                     </div>
                                 </a>
                             {% endif %}
@@ -71,10 +76,11 @@ Pesquisa
         </section>
     </main>
 
-     <section data-section class="container pesquisa">
-            <p class="font-medium text-3xl text-center">Título não encontrado!!</p>
-            <div class="w-full my-8 h-96 bg-center bg-contain bg-no-repeat" style="background-image: url('{% static 'images/pesquisa.svg'%}');"></div>
-     </section>
+    <section data-section class="container pesquisa">
+        <p class="font-medium text-3xl text-center">Título não encontrado!!</p>
+        <div class="w-full my-8 h-96 bg-center bg-contain bg-no-repeat"
+             style="background-image: url('{% static 'images/pesquisa.svg' %}');"></div>
+    </section>
 
     <script>
         const pesquisa = document.querySelectorAll("[data-return]");
@@ -88,19 +94,19 @@ Pesquisa
                 case 0:
                     if (container.childElementCount === 0) {
                         pesquisaContainArray[0].style.display = "none";
-                        account ++;
+                        account++;
                     }
                     break;
                 case 1:
                     if (container.childElementCount === 0) {
                         pesquisaContainArray[1].style.display = "none";
-                        account ++;
+                        account++;
                     }
                     break;
             }
         });
 
-        if(account === 2){
+        if (account === 2) {
             const main = document.querySelector("[data-main]");
             const section = document.querySelector("[data-section]");
 
