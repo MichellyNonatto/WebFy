@@ -40,7 +40,7 @@ Algumas coisas que você pode fazer com o WebFy:
 
 * Assistir videoclipes.
 * Rever seus artistas favoritos quando quiser.
-* Provacidade total com seu acesso.
+* Privacidade total com seu acesso.
 * Personalizar sua conta como você quiser.
 * Pesquisar suas músicas e artistas favoritos.
 * Vêr novas tendências.
