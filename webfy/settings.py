@@ -15,19 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['web-production-107a.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://web-production-107a.up.railway.app']
-CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,22 +61,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'webfy.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '224CABa4a2g43*FFCf5BfAa4*G2cCCc4',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '40381',
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
