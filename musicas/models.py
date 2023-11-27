@@ -36,4 +36,4 @@ class MusicaArtista(models.Model):
 
 class Usuario(AbstractUser):
     musica_visto = models.ManyToManyField("Musica", related_name="usuario")
-    foto_perfil = models.ImageField(upload_to='foto_perfil', default='avatar.jpg')
+    foto_perfil = models.ImageField(upload_to='foto_perfil', default='avatar.png')

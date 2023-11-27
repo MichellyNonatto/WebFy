@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6^$347_=b+-e-7f7n0d_l=8ftl1h4m746wo7(wz2&74omj1msp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['web-production-107a.up.railway.app', '*']
+ALLOWED_HOSTS = ['web-production-107a.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://web-production-107a.up.railway.app']
 CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
 
@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'webfy.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '224CABa4a2g43*FFCf5BfAa4*G2cCCc4',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '40381',
     }
 }
 
