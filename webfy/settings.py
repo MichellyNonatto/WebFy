@@ -10,24 +10,23 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
-import json
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-arquivo_json = 'env.json'
 
-with open(arquivo_json, 'r') as arquivo:
-    variaveis = json.load(arquivo)
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-    ALLOWED_HOSTS = variaveis.get('ALLOWED_HOSTS', [])
-    CSRF_FAILURE_VIEW = variaveis.get('CSRF_FAILURE_VIEW', [])
-    CSRF_TRUSTED_ORIGINS = variaveis.get('CSRF_TRUSTED_ORIGINS', [])
-    DATABASES = variaveis.get('DATABASES', [])
-    DEBUG = variaveis.get('DEBUG', [])
-    DJANGO_ALLOWED_HOSTS = variaveis.get('DJANGO_ALLOWED_HOSTS', [])
-    SECRET_KEY = variaveis.get('SECRET_KEY', 'chave_secreta_padrao')
+# SECURITY WARNING: keep the secret key used in production secret!
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ['web-production-107a.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-107a.up.railway.app']
+CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
 
 # Application definition
 
@@ -75,6 +74,22 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'webfy.wsgi.application'
+
+
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '224CABa4a2g43*FFCf5BfAa4*G2cCCc4',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '40381',
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
