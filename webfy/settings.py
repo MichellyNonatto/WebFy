@@ -10,19 +10,25 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+import json
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS=${{shared.ALLOWED_HOSTS}}
-CSRF_FAILURE_VIEW=${{shared.CSRF_FAILURE_VIEW}}
-CSRF_TRUSTED_ORIGINS=${{shared.CSRF_TRUSTED_ORIGINS}}
-DATABASES=${{shared.DATABASES}}
-DEBUG=${{shared.DEBUG}}
-DJANGO_ALLOWED_HOSTS=${{shared.DJANGO_ALLOWED_HOSTS}}
-SECRET_KEY=${{shared.SECRET_KEY}}
+arquivo_json = 'env.json'
 
+with open(arquivo_json, 'r') as arquivo:
+    variaveis = json.load(arquivo)
+
+    for variavel in variaveis:
+        ALLOWED_HOSTS: ['ALLOWED_HOSTS']
+        CSRF_FAILURE_VIEW: ['CSRF_FAILURE_VIEW']
+        CSRF_TRUSTED_ORIGINS: ['CSRF_TRUSTED_ORIGINS']
+        DATABASES: ['DATABASES']
+        DEBUG: ['DEBUG']
+        DJANGO_ALLOWED_HOSTS: ['DJANGO_ALLOWED_HOSTS']
+        SECRET_KEY: ['SECRET_KEY']
 
 # Application definition
 
