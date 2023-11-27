@@ -21,14 +21,13 @@ arquivo_json = 'env.json'
 with open(arquivo_json, 'r') as arquivo:
     variaveis = json.load(arquivo)
 
-    for variavel in variaveis:
-        ALLOWED_HOSTS: ['ALLOWED_HOSTS']
-        CSRF_FAILURE_VIEW: ['CSRF_FAILURE_VIEW']
-        CSRF_TRUSTED_ORIGINS: ['CSRF_TRUSTED_ORIGINS']
-        DATABASES: ['DATABASES']
-        DEBUG: ['DEBUG']
-        DJANGO_ALLOWED_HOSTS: ['DJANGO_ALLOWED_HOSTS']
-        SECRET_KEY: ['SECRET_KEY']
+    ALLOWED_HOSTS = variaveis.get('ALLOWED_HOSTS', [])
+    CSRF_FAILURE_VIEW = variaveis.get('CSRF_FAILURE_VIEW', [])
+    CSRF_TRUSTED_ORIGINS = variaveis.get('CSRF_TRUSTED_ORIGINS', [])
+    DATABASES = variaveis.get('DATABASES', [])
+    DEBUG = variaveis.get('DEBUG', [])
+    DJANGO_ALLOWED_HOSTS = variaveis.get('DJANGO_ALLOWED_HOSTS', [])
+    SECRET_KEY = variaveis.get('SECRET_KEY', 'chave_secreta_padrao')
 
 # Application definition
 
