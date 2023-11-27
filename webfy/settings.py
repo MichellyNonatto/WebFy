@@ -11,10 +11,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+import logging
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 ALLOWED_HOSTS = ['web-production-107a.up.railway.app']
+
+# Configuração do logger para exibir informações sobre as variáveis de ambiente
+logger = logging.getLogger(__name__)
+logger.info("Variáveis de Ambiente:")
+for key, value in os.environ.items():
+    logger.info(f"{key}: {value}")
+
+
 # Application definition
 
 INSTALLED_APPS = [
