@@ -15,15 +15,6 @@
   </a>
 </p>
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-## Índice
-
-- [Introdução](#introduction)
-- [Recursos](#features)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## Introdução
 
 Confira os vídeos musicais mais incríveis do YouTube em nossa plataforma que organiza os mais populares e os seus favoritos, tudo em um único lugar. Com recursos totalmente gratuitos, crie sua conta agora e desfrute do melhor que o WebFy tem a oferecer.
