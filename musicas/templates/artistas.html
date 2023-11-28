@@ -83,8 +83,7 @@
             <h3 class="font-bold my-8 text-2xl uppercase">Assistidos</h3>
             <section class="flex flex-wrap gap-8">
                 {% for musica in request.user.musica_visto.all %}
-                    {% if forloop.counter < 5 %}
-                        <div class="text-center">
+                     <div class="text-center">
                             <h2 class="my-2 font-bold text-lg">{{ musica.titulo }}</h2>
                             <a class="transition ease-in-out delay-150 hover:opacity-75"
                                href="{% url 'musicas:detalheartista' musica.pk %}">
@@ -93,7 +92,6 @@
                                 </div>
                             </a>
                         </div>
-                    {% endif %}
                 {% endfor %}
             </section>
         </div>
