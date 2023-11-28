@@ -8,6 +8,14 @@ LISTA_CATEGORIAS = {
     ("POP", "Pop"),
     ("MPB", "MPB"),
     ("PAGODE", "Pagode"),
+    ("RAP","Rap"),
+    ("FUNCK","Funck"),
+    ("SERTANEJO","Sertanejo"),
+    ("HEAVY_METAL","Heavy Metal"),
+    ("FORRO","Forró"),
+    ("KPOP","K-Pop"),
+    ("ELETRONICO","Eletrônico"),
+    ("GOSPEL","Gospel"),
     ("OUTROS", "Outros"),
 }
 
