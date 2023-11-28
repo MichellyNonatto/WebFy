@@ -24,7 +24,7 @@ class Musica(models.Model):
     titulo = models.CharField(max_length=100)
     thumb = models.ImageField(upload_to='thumb_musicas')
     descricao = models.TextField(max_length=1000)
-    categoria = models.CharField(max_length=10, choices=LISTA_CATEGORIAS)
+    categoria = models.CharField(max_length=30, choices=LISTA_CATEGORIAS)
     visualizacoes = models.IntegerField(default=0)
     dataCriacao = models.DateTimeField(default=timezone.now)
 
