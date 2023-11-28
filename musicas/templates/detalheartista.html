@@ -14,7 +14,7 @@
                     {{ object.titulo }}
                 </h2>
                 <div class="flex gap-8 text-center my-4 font-medium text-white">
-                    <p>{{ object.categoria }}</p>
+                    <p>{{ object.get_categoria_display }}</p>
                     <p class="mx-4">|</p>
                     <p>Visualizações: {{ object.visualizacoes }}</p>
                 </div>
