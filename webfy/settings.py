@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-6^$347_=b+-e-7f7n0d_l=8ftl1h4m746wo7(wz2&74omj1msp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-107a.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://web-production-107a.up.railway.app']
+ALLOWED_HOSTS = ['web-production-dfa68.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-dfa68.up.railway.app']
 CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
 
 # Application definition
@@ -85,9 +85,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': '224CABa4a2g43*FFCf5BfAa4*G2cCCc4',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '40381',
+        'PASSWORD': 'f-DcfCdFCgEfc-AC-G1E12CFBA4eFb6C',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': '37027',
     }
 }
 
